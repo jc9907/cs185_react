@@ -14,7 +14,7 @@ body {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .topnav a:hover {
@@ -23,15 +23,50 @@ body {
 }
 
 .topnav a.active {
-  background-color: #4CAF50;
+  background-color: rgb(24, 112, 146);
   color: white;
 }
 
-.hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("photographer.jpg");
-  height: 50%;
-  background-position: center;
+.banner {
+  background-image: url("project1a.png");
+  background-size: contain;
   background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+  height: 300px;
+  width: 100%;
+  padding: 200px 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.banner > p {
+  color: white;
+  padding: 100px 100px;
+}
+
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
 }
