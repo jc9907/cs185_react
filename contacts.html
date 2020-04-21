@@ -6,29 +6,34 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div class="topnav">
-      <a href="index.html">Home</a>
-      <a href="projects.html">Images</a>
-      <a class="active" href="contacts.html">Videos</a>
-      <a href="myInfo.html">About me</a>
-    </div>
+    <nav id="navbar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Images</a></li>
+        <element id="currentpage">
+          <li><a class="active" href="contacts.html">Videos</a></li>
+        </element>
+
+        <li><a href="myInfo.html">About me</a></li>
+      </ul>
+    </nav>
     <h2>Videos</h2>
     <p>
       Here are some videos I'd like to share
     </p>
-    <div class="row">
-      <div class="column">
-        <video width="480" height="480" controls>
+    <div class="parent">
+      <div class="child">
+        <video width="480" height="480" id="v1" alt="1" controls>
           <source src="video1.mp4" type="video/mp4" />
         </video>
       </div>
-      <div class="column">
-        <video width="480" height="480" controls>
+      <div class="child">
+        <video width="480" height="480" id="v2" alt="2" controls>
           <source src="video2.mp4" type="video/mp4" />
         </video>
       </div>
-      <div class="column">
-        <video width="480" height="480" controls>
+      <div class="child">
+        <video width="480" height="480" id="v3" alt="2" controls>
           <source src="video3.mp4" type="video/mp4" />
         </video>
       </div>
