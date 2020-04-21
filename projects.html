@@ -6,34 +6,213 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div class="topnav">
-      <a href="index.html">Home</a>
-      <a class="active" href="projects.html">Images</a>
-      <a href="contacts.html">Videos</a>
-      <a href="myInfo.html">About me</a>
-    </div>
+    <nav id="navbar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <element id="currentpage">
+          <li><a class="active" href="projects.html">Images</a></li>
+        </element>
+        <li><a href="contacts.html">Videos</a></li>
+        <li><a href="myInfo.html">About me</a></li>
+      </ul>
+    </nav>
     <h2>Images</h2>
     <p>
       Here are some images of my life.
     </p>
-    <div class="row">
-      <div class="column">
-        <img src="image1.jpg" alt="img1" style="width: 100%;" />
+    <div class="parent">
+      <div class="child" id="i1">
+        <img
+          src="image1.jpg"
+          id="img01"
+          alt="sunset in LA"
+          style="width: 100%;"
+        />
       </div>
-      <div class="column">
-        <img src="image4.jpg" alt="img4" style="width: 100%;" />
+      <div class="child" id="i2">
+        <img
+          src="image4.jpg"
+          id="img02"
+          alt="Laguna Beach"
+          style="width: 100%;"
+        />
       </div>
-      <div class="column">
-        <img src="image3.jpg" alt="img3" style="width: 100%;" />
+      <div class="child" id="i3">
+        <img
+          src="image3.jpg"
+          id="img03"
+          alt="Shadow of Friends"
+          style="width: 100%;"
+        />
+      </div>
+      <div class="child" id="i4">
+        <img
+          src="image6.jpg"
+          id="img04"
+          alt="Pink Sunset"
+          style="width: 100%;"
+        />
+      </div>
+      <div class="child" id="i5">
+        <img
+          src="image7.jpg"
+          id="img05"
+          alt="Graduation"
+          style="width: 100%;"
+        />
       </div>
     </div>
-    <div class="row">
-      <div class="column">
-        <img src="image6.jpg" alt="img6" style="width: 100%;" />
-      </div>
-      <div class="column">
-        <img src="image7.jpg" alt="img7" style="width: 100%;" />
-      </div>
+
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img" />
+      <div id="caption"></div>
     </div>
+    <script>
+      var modal = document.getElementById("myModal");
+
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var img = document.getElementById("img01");
+      var modalImg = document.getElementById("img");
+      var captionText = document.getElementById("caption");
+      img.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+    </script>
+
+    <div id="myModal2" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="oo" />
+      <div id="caption2"></div>
+    </div>
+    <script>
+      var modal2 = document.getElementById("myModal2");
+
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var img2 = document.getElementById("img02");
+      var modalImg2 = document.getElementById("oo");
+      var captionText2 = document.getElementById("caption2");
+      img2.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+    </script>
+
+    <div id="myModal3" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="3" />
+      <div id="caption3"></div>
+    </div>
+    <script>
+      var modal3 = document.getElementById("myModal3");
+
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var img3 = document.getElementById("img03");
+      var modalImg3 = document.getElementById("3");
+      var captionText3 = document.getElementById("caption3");
+      img3.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+    </script>
+    <div id="myModal4" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="4" />
+      <div id="caption4"></div>
+    </div>
+    <script>
+      var modal4 = document.getElementById("myModal4");
+
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var img4 = document.getElementById("img04");
+      var modalImg4 = document.getElementById("4");
+      var captionText4 = document.getElementById("caption4");
+      img4.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+    </script>
+    <div id="myModal5" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="5" />
+      <div id="caption5"></div>
+    </div>
+    <script>
+      var modal5 = document.getElementById("myModal5");
+
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var img5 = document.getElementById("img05");
+      var modalImg5 = document.getElementById("5");
+      var captionText5 = document.getElementById("caption5");
+      img5.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+    </script>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script>
+      //Get the button
+      var mybutton = document.getElementById("myBtn");
+
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction();
+      };
+
+      function scrollFunction() {
+        if (
+          document.body.scrollTop > 2 ||
+          document.documentElement.scrollTop > 2
+        ) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
   </body>
 </html>
