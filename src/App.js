@@ -1,14 +1,25 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
+import config from "./config.js";
 import { Router } from "@reach/router";
 import "./App.css";
 import Home from "./pages/Home";
 import Images from "./pages/Images";
 import Videos from "./pages/Videos";
 import About from "./pages/About";
+import GuestBook from "./pages/GuestBook";
 import ResponsiveNavigation from "./Components/ResponsiveNavigation";
 import logo from "./logo.svg";
+
 import ScrollUpButton from "react-scroll-up-button";
+
+const firebase = require("firebase");
+
 function App() {
+  useEffect(() => {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(config);
+    }
+  });
   const navLinks = [
     {
       text: "Home",
@@ -29,6 +40,11 @@ function App() {
       text: "About Me",
       path: "/About",
       icon: "ion-ios-home",
+    },
+    {
+      text: "Guest Book",
+      path: "/GuestBook",
+      icon: "ion-ios-book",
     },
   ];
   return (
@@ -55,6 +71,7 @@ function App() {
         <Images path="/Images" />
         <Videos path="/Videos" />
         <About path="/About" />
+        <GuestBook path="/GuestBook" />
       </Router>
     </div>
   );

@@ -4,6 +4,7 @@ nav.responsive-toolbar {
   width: 100%;
   position: fixed;
   box-shadow: 2px 0px 2px #ccc;
+  z-index: 100;
 
   & ~ * {
     padding-top: 60px;
@@ -58,10 +59,9 @@ nav.responsive-toolbar {
       width: 300px;
       left: -240px;
       position: fixed;
-      top: 0px;
+      top: 60px;
       flex-direction: column;
       transition: 300ms ease all;
-      top: 0;
 
       &.active {
         left: 0px;

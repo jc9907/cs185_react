@@ -217,3 +217,7 @@
   border: 1px solid gray;
   padding: 10px;
 }
+
+hr.solid {
+  border-top: 3px solid #bbb;
+}
