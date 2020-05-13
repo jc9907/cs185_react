@@ -14,6 +14,9 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import TableContainer from "@material-ui/core/TableContainer";
+import TablePagination from "@material-ui/core/TablePagination";
 import config from "../config";
 const firebase = require("firebase");
 const useStyles = makeStyles((theme) => ({
@@ -32,6 +35,12 @@ const useStyles = makeStyles((theme) => ({
   },
   chip: {
     margin: "5px",
+  },
+  paper: {
+    width: "100%",
+  },
+  container: {
+    maxHeight: 550,
   },
   di: {
     display: "grid",
@@ -81,26 +90,56 @@ export default function GuestBook() {
       !validateEmail(contact) ||
       !validateName(name)
     ) {
+      setAlert("Please Filling correct information Before Submitting");
       setOpen(true);
     } else {
+      var today = new Date();
+      var date =
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() + 1) +
+        "-" +
+        today.getDate() +
+        " " +
+        today.getHours() +
+        ":" +
+        today.getMinutes() +
+        ":" +
+        today.getSeconds();
       const jsonBody = {
         Name: name,
         Description: description,
         Message: message,
         Viewable: viewable,
+        Time: date,
         Contact: contact,
       };
       firebase.database().ref("data").push().set(jsonBody);
+      setAlert("Message Submitted!");
+      setOpen(true);
     }
   };
-  const [name, setName] = React.useState("defaultName");
+  const [name, setName] = React.useState("");
   const [description, setDescription] = React.useState("");
-  const [message, setMessage] = React.useState("default message          ");
+  const [message, setMessage] = React.useState("");
   const [viewable, setViewable] = React.useState(true);
   const [contact, setContact] = React.useState("");
+  const [alert, setAlert] = React.useState("");
   const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState([]);
   const [shouldRender, setShouldRender] = React.useState(true);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
   useEffect(() => {
     if (!firebase.apps.length) {
       firebase.initializeApp(config);
@@ -108,23 +147,9 @@ export default function GuestBook() {
     let ref = firebase.database().ref("data");
     ref.on("value", (snapshot) => {
       var val = snapshot.val();
-
-      snapshot.forEach(function (childSnapshot) {
-        var n = childSnapshot.child("Name").val();
-        var d = childSnapshot.child("Description").val();
-        var m = childSnapshot.child("Message").val();
-        var v = childSnapshot.child("Viewable").val();
-        console.log(n, d, m, v);
-
-        const newData = [];
-        newData.push(n + " ");
-        console.log(newData);
-        setData((prevPack) => [...prevPack, newData[0]]);
-        console.log(data);
-        //return true;
-      });
-      //setData(state)
-      console.log(data);
+      const newData = [];
+      console.log(Object.values(snapshot.val()));
+      setData(Object.values(snapshot.val()));
     });
 
     //   for (var i = keys.length - 1; i >= 0; i--) {
@@ -229,7 +254,51 @@ export default function GuestBook() {
             </Button>
           </ListItem>
         </List>
-        <hr class="solid"></hr>
+        <Paper className={classes.paper}>
+          <TableContainer className={classes.container}>
+            <Table stickyHeader aria-label="sticky table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="center">Name</TableCell>
+                  <TableCell align="center">Description</TableCell>
+                  <TableCell align="center">Message</TableCell>
+                  <TableCell align="center">Time Posted</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {data
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row) => {
+                    if (row.Viewable === true) {
+                      return (
+                        <TableRow>
+                          <TableCell component="th" scope="row">
+                            {row.Name}
+                          </TableCell>
+                          <TableCell align="center">
+                            {row.Description}
+                          </TableCell>
+                          <TableCell align="center">{row.Message}</TableCell>
+                          <TableCell align="center">{row.Time}</TableCell>
+                        </TableRow>
+                      );
+                    } else {
+                      return;
+                    }
+                  })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[10, 20, 30]}
+            component="div"
+            count={data.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onChangePage={handleChangePage}
+            onChangeRowsPerPage={handleChangeRowsPerPage}
+          />
+        </Paper>
         <Snackbar
           anchorOrigin={{
             vertical: "bottom",
@@ -240,9 +309,7 @@ export default function GuestBook() {
           ContentProps={{
             "aria-describedby": "message-id",
           }}
-          message={
-            <span id="message-id">Please Review Form Before Proceeding</span>
-          }
+          message={<span id="message-id">{alert}</span>}
         />
       </div>
     </div>
