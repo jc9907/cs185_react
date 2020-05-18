@@ -9,14 +9,19 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "antd": "^4.2.2",
     "firebase": "^7.14.2",
     "material-ui": "^0.20.2",
     "node-sass": "^4.14.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-image-lightbox": "^5.1.1",
     "react-player": "^2.0.1",
     "react-script-tag": "^1.1.2",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-scrolltop-button": "^0.1.6",
+    "simple-react-lightbox": "^2.8.0-5",
+    "srl": "^0.2.3"
   },
   "scripts": {
     "start": "react-scripts start",

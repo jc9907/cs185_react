@@ -7,6 +7,7 @@ import Images from "./pages/Images";
 import Videos from "./pages/Videos";
 import About from "./pages/About";
 import GuestBook from "./pages/GuestBook";
+import Movies from "./pages/Movies";
 import ResponsiveNavigation from "./Components/ResponsiveNavigation";
 import logo from "./logo.svg";
 
@@ -46,6 +47,11 @@ function App() {
       path: "/GuestBook",
       icon: "ion-ios-book",
     },
+    {
+      text: "My Movies",
+      path: "/Movies",
+      icon: "ion-ios-tv",
+    },
   ];
   return (
     <div className="App">
@@ -72,6 +78,7 @@ function App() {
         <Videos path="/Videos" />
         <About path="/About" />
         <GuestBook path="/GuestBook" />
+        <Movies path="/Movies" />
       </Router>
     </div>
   );
